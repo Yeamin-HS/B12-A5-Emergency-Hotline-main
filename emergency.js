@@ -37,7 +37,7 @@
                     updateCounters();
                     alert(`Number ${number} copied to clipboard!`);
                 }).catch(() => {
-                    // Fallback for older browsers
+                    
                     const textArea = document.createElement('textarea');
                     textArea.value = number;
                     document.body.appendChild(textArea);
@@ -62,7 +62,7 @@
                     return;
                 }
 
-                // Deduct coins
+                // coin minus
                 coinCount -= 20;
                 updateCounters();
 
