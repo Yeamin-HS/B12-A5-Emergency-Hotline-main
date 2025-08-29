@@ -1,34 +1,32 @@
- 
-        let coinCount = 100;
+      let coinCount = 100;
         let copyCount = 0;
         let callHistory = [];
         let heartCount = 0;
 
-        // Update display counters
+     
         function updateCounters() {
             document.getElementById('heartCount').textContent = heartCount;
             document.getElementById('coinCount').textContent = coinCount;
             document.getElementById('copyCount').textContent = copyCount;
         }
 
-        // Heart button functionality
-        // Heart button functionality (modified)
-            document.querySelectorAll('.heart-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const heartImg = this.querySelector('img');
-        if (heartImg.getAttribute('src').includes('heart-logo2.png')) {
-            // Change to red heart
-            heartImg.setAttribute('src', 'assets/heart.png');
-            heartCount++;
-        } else {
-            // Change back to default heart
-            
-            heartCount++;
-        }
-        updateCounters();
-    });
-});
-
+        // Heart button: 
+        document.querySelectorAll('.heart-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const heartImg = this.querySelector('img');
+                const src = heartImg.getAttribute('src');
+                if (src.includes('heart-logo2.png')) {
+                    heartImg.setAttribute('src', 'assets/heart.png');
+                    heartCount++;
+                    updateCounters();
+                }
+                else {
+                    heartCount++;
+                    updateCounters();
+                }
+                
+            });
+        });
 
         // Copy button functionality
         document.querySelectorAll('.copy-btn').forEach(btn => {
@@ -53,7 +51,7 @@
             });
         });
 
-        // Call button functionality
+        // Call btn
         document.querySelectorAll('.call-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const serviceName = this.dataset.service;
@@ -71,7 +69,7 @@
                 // Show call alert
                 alert(`Calling ${serviceName} at ${number}`);
 
-                // Add to call history with timestamp
+                
                 const now = new Date();
                 const time = now.toLocaleTimeString('en-US', { 
                     hour12: true, 
@@ -90,7 +88,7 @@
             });
         });
 
-        // Update call history display
+       
         function updateCallHistory() {
             const historyList = document.getElementById('historyList');
             
@@ -108,11 +106,9 @@
             `).join('');
         }
 
-        // Clear history functionality
         document.getElementById('clearHistory').addEventListener('click', function() {
             callHistory = [];
             updateCallHistory();
         });
 
-        // Initialize counters
         updateCounters();
