@@ -1,0 +1,1 @@
+console.log("emergency.js loaded");
